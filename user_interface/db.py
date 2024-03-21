@@ -2,6 +2,7 @@ import psycopg2
 from contextlib import contextmanager
 from psycopg2 import Error
 from configparser import ConfigParser
+from psycopg2.extras import DictCursor
 
 config = ConfigParser()
 config.read('config.ini')
@@ -45,3 +46,25 @@ def get_all_models():
     except Error as e:
         return [], e.pgerror
 
+def execute_custom_query(query):
+    results = []
+    error = None
+    try:
+        with get_db_connection() as conn:
+            with conn.cursor(cursor_factory=DictCursor) as cursor:
+                cursor.execute(query)
+                if query.strip().upper().startswith("SELECT"):
+                    # Fetch rows as dictionaries
+                    columns = [desc[0] for desc in cursor.description]
+                    rows = cursor.fetchall()
+                    for row in rows:
+                        # Convert each tuple to a dictionary
+                        row_dict = dict(zip(columns, row))
+                        results.append(row_dict)
+                else:
+                    # For non-SELECT queries, perform the operation without returning results
+                    conn.commit()
+    except psycopg2.Error as e:
+        error = str(e)
+    
+    return results, error

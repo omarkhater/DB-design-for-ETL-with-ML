@@ -30,6 +30,16 @@ def list_models():
         return render_template('list_models.html', error=error)
     return render_template('list_models.html', models=models)
 
+
+@app.route('/execute_query', methods=['GET', 'POST'])
+def execute_query():
+    if request.method == 'POST':
+        query = request.form.get('query')
+        results, error = db.execute_custom_query(query)
+        return render_template('execute_query.html', results=results, error=error, query=query)
+    return render_template('execute_query.html')
+
+
 @app.route('/')
 def home():
     return render_template('home.html')
