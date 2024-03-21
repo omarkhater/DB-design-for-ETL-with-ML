@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Home - ETL & ML Management{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Welcome to the ETL & ML Management System</h1>
+    <p>This application helps you manage and optimize your ETL scripts with the power of machine learning.</p>
+
+    <h2>Features</h2>
+    <ul>
+        <li>Add and manage your ETL models</li>
+        <li>Optimize ETL scripts with ML insights</li>
+        <li>View and analyze performance metrics</li>
+    </ul>
+
+    <h2>Get Started</h2>
+    <p>Ready to optimize your ETL processes? <a href="{{ url_for('add_model') }}">Add your first model</a> or <a href="{{ url_for('list_models') }}">view existing models</a>.</p>
+
+    <h2>Support</h2>
+    <p>Need help or have suggestions? Contact us at support@example.com.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}List Models{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>List of Models</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Model ID</th>
+                <th>Dataset ID</th>
+                <th>Engineer ID</th>
+                <th>Customer ID</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for model in models %}
+            <tr>
+                <td>{{ model[0] }}</td> <!-- ModelID -->
+                <td>{{ model[1] }}</td> <!-- DatasetID -->
+                <td>{{ model[2] }}</td> <!-- EngineerID -->
+                <td>{{ model[3] }}</td> <!-- CustomerID -->
+                <td>{{ model[4] }}</td> <!-- Description -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
