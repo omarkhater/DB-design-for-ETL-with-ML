@@ -4,6 +4,8 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 from configparser import ConfigParser
+import streamlit as st
+
 # Function to build the schema dynamically from the database
             
 config = ConfigParser()
