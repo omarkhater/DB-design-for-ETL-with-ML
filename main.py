@@ -24,7 +24,8 @@ def main():
         for a company specializing in ETL solutions and machine learning modeling. 
         It aims to enhance productivity, data management, and insight generation through a user-friendly interface.
         This prototype project is designed from scratch following the design guidelines for modern databases. 
-        A more detailed description for the design stages can be found [here]()
+        A more detailed description for the design stages can be found [here](https://drive.google.com/file/d/1-THvLR2ViUpZy5h0Gv7GB_l9wgXHYJtZ/view?usp=sharing)
+
         ### Features Overview
 
         - **Visualize Data**: Explore and visualize data from different tables in the database, providing insights into the stored information.
