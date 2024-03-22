@@ -9,7 +9,7 @@ import streamlit as st
 # Function to build the schema dynamically from the database
             
 config = ConfigParser()
-config.read('../config.ini')
+config.read('config.ini')
 
 conn_params = {
     "user": config.get('database', 'user'),

@@ -17,13 +17,14 @@ def main():
     if action == "About":
         st.title("About This Project")
         st.markdown("""
-        ### Application Goal
+        ### Project Goal
 
         This project is designed to offer a comprehensive suite of tools for 
         managing and analyzing data within a database, tailored specifically 
         for a company specializing in ETL solutions and machine learning modeling. 
         It aims to enhance productivity, data management, and insight generation through a user-friendly interface.
-        
+        This prototype project is designed from scratch following the design guidelines for modern databases. 
+        A more detailed description for the design stages can be found [here]()
         ### Features Overview
 
         - **Visualize Data**: Explore and visualize data from different tables in the database, providing insights into the stored information.
