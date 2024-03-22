@@ -1,6 +1,14 @@
-# DB Design for ETL with ML
+# Database Design for Extract, Transform, Load (ETL) with Machine Learning.
 
-This repository contains the implementation of a database design intended for ETL (Extract, Transform, Load) processes enhanced by Machine Learning (ML) functionalities. The project is divided into two main directories: `db_management` for database scripts and operations, and `user_interface` for the web interface to interact with the database.
+This repository contains the implementation of a database design intended for ETL (Extract, Transform, Load) processes enhanced by Machine Learning (ML) solutions. This database application is designed for a fiction company specializing in providing Extract, Transform, and Load (ETL) solutions optimized by machine learning (ML) modeling techniques. Aimed at optimizing data processing workflows and enhancing predictive analytics for diverse materials data, the application facilitates the creation, tracking, and optimization of custom ML models and ETL scripts tailored to specific customer requirements.
+
+The project is divided into two main parts: 
+- `db_management` for database scripts and operations
+- `user_interface` for the web interface to interact with the database.
+  
+## Database Design Process
+---
+A comprehensive guide on the database design stages including the E/R diagram design, and the relation normalization process is described [here](https://drive.google.com/file/d/1-THvLR2ViUpZy5h0Gv7GB_l9wgXHYJtZ/view?usp=sharing)
 
 ## Project Structure
 ```
@@ -10,14 +18,8 @@ DB-design-for-ETL-with-ML/
 │ ├── Populate_data.py # Script to populate the database with generated data
 │ ├── Schema.sql # SQL schema definitions for the database
 │ └── helpers.py # Helper functions for database management tasks
-│
-└── user_interface/
-├── app.py # Flask application entry point
-├── db.py # Database interaction functions for the Flask app
-└── templates/ # HTML templates for the web interface
-├── home.html # Home page template
-├── add_model.html # Template for adding new models
-└── list_models.html # Template for listing all models
+├── main.py # streamlit application entry point
+├── app_helpers.py # Some utility helpers 
 ```
 
 ## db_management
@@ -31,14 +33,10 @@ This directory contains scripts and SQL definitions crucial for setting up, popu
 
 ## user_interface
 
-This directory holds the Flask application and templates required for the web interface, allowing users to interact with the database.
+This part holds the streamlit application required for the web interface, allowing users to interact with the database.
 
-- `app.py`: The main Flask application file that defines routes and views.
-- `db.py`: Contains functions that the Flask app uses to interact with the database.
-- `templates/`: Stores HTML templates for the web interface.
-  - `home.html`: The landing page providing an overview and links to other functionalities.
-  - `add_model.html`: A form for adding new ML models to the database.
-  - `list_models.html`: Displays a list of all models currently stored in the database.
+- `main.py`: The main Flask application file that defines routes and views.
+- `app_helpers.py`: Contains some helper methods to interact with the database.
 
 ## Getting Started
 
@@ -48,17 +46,23 @@ To get started with this project, clone the repository and navigate into the pro
 git clone https://github.com/<your-username>/DB-design-for-ETL-with-ML.git
 cd DB-design-for-ETL-with-ML
 ```
+Then install all project dependancies using 
+```
+pip install -r requirments.txt
+```
 
 ## Setting Up the Database
-Create your database using the provided `Schema.sql` file.
-Populate the database with initial data using `Populate_data.py`.
 
-## Running the Flask Application
+This project exploit PostgreSQL database instance hosted on Amazon RDS. Then, 
 
-Ensure you have Flask installed, and then run `app.py` from the user_interface directory:
+- Create the database schema using the provided `Schema.sql` file. 
+- Populate the database with initial data using `Populate_data.py`.
 
-cd user_interface
-flask run
+## Running the Streamlit Application
 
-Visit http://127.0.0.1:5000/ in your browser to interact with the application.
+After installing all necessary requirments, run the following command: 
+```
+streamlit run main.py
+```
+Visit [http://127.0.0.1:5000/](http://localhost:8501) in your browser to interact with the application.
 
