@@ -13,26 +13,32 @@
 
     {% if error %}
         <div class="alert alert-danger" role="alert">{{ error }}</div>
-    {% elif results %}
-        <h3>Results</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    {% for col in results[0].keys() %}
-                    <th>{{ col }}</th>
+    {% elif results is not none %}
+        {% if results %}
+            <h3>Results</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        {% for col in results[0].keys() %}
+                        <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in results %}
+                    <tr>
+                        {% for value in row.values() %}
+                        <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
                     {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in results %}
-                <tr>
-                    {% for value in row.values() %}
-                    <td>{{ value }}</td>
-                    {% endfor %}
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-info" role="alert">No returned data for the provided query.</div>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-info" role="alert">Enter a query and press Execute to see results.</div>
     {% endif %}
 </div>
 {% endblock %}

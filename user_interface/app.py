@@ -36,9 +36,14 @@ def execute_query():
     if request.method == 'POST':
         query = request.form.get('query')
         results, error = db.execute_custom_query(query)
-        return render_template('execute_query.html', results=results, error=error, query=query)
-    return render_template('execute_query.html')
 
+        # Check if no results returned and no error occurred
+        if not results and not error:
+            message = "No returned data for the provided query."
+            return render_template('execute_query.html', message=message, query=query)
+        return render_template('execute_query.html', results=results, error=error, query=query)
+    
+    return render_template('execute_query.html')
 
 @app.route('/')
 def home():
